@@ -181,46 +181,48 @@ export class TitleScene extends Phaser.Scene {
       });
     }
 
-    // Level Editor button (bottom-right)
-    const edBg = this.add.graphics();
-    edBg.fillStyle(0xffa726);
-    edBg.fillRoundedRect(640, 455, 140, 34, 10);
-    edBg.lineStyle(2, 0xf57c00);
-    edBg.strokeRoundedRect(640, 455, 140, 34, 10);
-    const edZone = this.add.zone(710, 472, 140, 34).setInteractive({ useHandCursor: true });
-    const edText = this.add.text(710, 472, 'Level Editor', {
-      fontSize: '16px', color: '#ffffff', fontFamily: 'Arial', fontStyle: 'bold',
-    }).setOrigin(0.5);
-    edZone.on('pointerover', () => {
-      edBg.clear(); edBg.fillStyle(0xffb74d);
+    if (import.meta.env.DEV) {
+      // Level Editor button (bottom-right) — dev only
+      const edBg = this.add.graphics();
+      edBg.fillStyle(0xffa726);
       edBg.fillRoundedRect(640, 455, 140, 34, 10);
-      edBg.lineStyle(2, 0xf57c00); edBg.strokeRoundedRect(640, 455, 140, 34, 10);
-    });
-    edZone.on('pointerout', () => {
-      edBg.clear(); edBg.fillStyle(0xffa726);
-      edBg.fillRoundedRect(640, 455, 140, 34, 10);
-      edBg.lineStyle(2, 0xf57c00); edBg.strokeRoundedRect(640, 455, 140, 34, 10);
-    });
-    edZone.on('pointerdown', () => {
-      SoundSystem.play('buttonClick');
-      this.cameras.main.fadeOut(400);
-      this.cameras.main.once('camerafadeoutcomplete', () => {
-        this.scene.start('LevelEditorScene');
+      edBg.lineStyle(2, 0xf57c00);
+      edBg.strokeRoundedRect(640, 455, 140, 34, 10);
+      const edZone = this.add.zone(710, 472, 140, 34).setInteractive({ useHandCursor: true });
+      const edText = this.add.text(710, 472, 'Level Editor', {
+        fontSize: '16px', color: '#ffffff', fontFamily: 'Arial', fontStyle: 'bold',
+      }).setOrigin(0.5);
+      edZone.on('pointerover', () => {
+        edBg.clear(); edBg.fillStyle(0xffb74d);
+        edBg.fillRoundedRect(640, 455, 140, 34, 10);
+        edBg.lineStyle(2, 0xf57c00); edBg.strokeRoundedRect(640, 455, 140, 34, 10);
       });
-    });
+      edZone.on('pointerout', () => {
+        edBg.clear(); edBg.fillStyle(0xffa726);
+        edBg.fillRoundedRect(640, 455, 140, 34, 10);
+        edBg.lineStyle(2, 0xf57c00); edBg.strokeRoundedRect(640, 455, 140, 34, 10);
+      });
+      edZone.on('pointerdown', () => {
+        SoundSystem.play('buttonClick');
+        this.cameras.main.fadeOut(400);
+        this.cameras.main.once('camerafadeoutcomplete', () => {
+          this.scene.start('LevelEditorScene');
+        });
+      });
 
-    // Debug: unlock all animals (small button, bottom-left)
-    const dbgZone = this.add.zone(40, 485, 70, 24).setInteractive({ useHandCursor: true });
-    const dbgText = this.add.text(40, 485, 'Unlock All', {
-      fontSize: '10px', color: '#546e7a', fontFamily: 'Arial',
-    }).setOrigin(0.5);
-    dbgZone.on('pointerover', () => dbgText.setColor('#81d4fa'));
-    dbgZone.on('pointerout', () => dbgText.setColor('#546e7a'));
-    dbgZone.on('pointerdown', () => {
-      ProgressSystem.unlockAll();
-      dbgText.setText('Done!').setColor('#69f0ae');
-      this.time.delayedCall(800, () => this.scene.restart());
-    });
+      // Debug: unlock all animals (small button, bottom-left)
+      const dbgZone = this.add.zone(40, 485, 70, 24).setInteractive({ useHandCursor: true });
+      const dbgText = this.add.text(40, 485, 'Unlock All', {
+        fontSize: '10px', color: '#546e7a', fontFamily: 'Arial',
+      }).setOrigin(0.5);
+      dbgZone.on('pointerover', () => dbgText.setColor('#81d4fa'));
+      dbgZone.on('pointerout', () => dbgText.setColor('#546e7a'));
+      dbgZone.on('pointerdown', () => {
+        ProgressSystem.unlockAll();
+        dbgText.setText('Done!').setColor('#69f0ae');
+        this.time.delayedCall(800, () => this.scene.restart());
+      });
+    }
 
     // Parade of animals at the bottom
     const animals = ['bunny', 'cat', 'bird', 'penguin', 'puppy', 'frog', 'fox', 'panda', 'unicorn', 'dragon'];
