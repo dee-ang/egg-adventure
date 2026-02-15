@@ -796,65 +796,32 @@ export class GameScene extends Phaser.Scene {
   }
 
   private createTouchControls(): void {
-    const depth = 102;
-    const alphaIdle = 0.25;
-    const alphaActive = 0.5;
+    // Show the HTML touch bar
+    const bar = document.getElementById('touch-bar');
+    if (!bar) return;
+    bar.style.display = 'flex';
 
-    const makeTouchButton = (
-      x: number, y: number, radius: number, label: string,
-      onDown: () => void, onUp: () => void,
-    ): void => {
-      // Background circle
-      const bg = this.add.circle(x, y, radius, 0xffffff, alphaIdle)
-        .setScrollFactor(0).setDepth(depth);
-      // Label text
-      const txt = this.add.text(x, y, label, {
-        fontSize: `${Math.floor(radius * 0.8)}px`,
-        color: '#ffffff',
-        fontFamily: 'Arial',
-        fontStyle: 'bold',
-      }).setOrigin(0.5).setScrollFactor(0).setDepth(depth + 1).setAlpha(alphaIdle);
-
-      // Make interactive with a circle hit area
-      bg.setInteractive(new Phaser.Geom.Circle(0, 0, radius), Phaser.Geom.Circle.Contains);
-
-      bg.on('pointerdown', () => {
-        bg.setAlpha(alphaActive);
-        txt.setAlpha(alphaActive);
-        onDown();
-      });
-      bg.on('pointerup', () => {
-        bg.setAlpha(alphaIdle);
-        txt.setAlpha(alphaIdle);
-        onUp();
-      });
-      bg.on('pointerout', () => {
-        bg.setAlpha(alphaIdle);
-        txt.setAlpha(alphaIdle);
-        onUp();
-      });
+    const bind = (id: string, onDown: () => void, onUp: () => void) => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('touchstart', (e) => { e.preventDefault(); btn.classList.add('pressed'); onDown(); });
+      btn.addEventListener('touchend', (e) => { e.preventDefault(); btn.classList.remove('pressed'); onUp(); });
+      btn.addEventListener('touchcancel', (e) => { e.preventDefault(); btn.classList.remove('pressed'); onUp(); });
     };
 
-    // Left arrow
-    makeTouchButton(70, 440, 35, '<',
+    bind('btn-left',
       () => { this.touchLeft = true; },
       () => { this.touchLeft = false; },
     );
-
-    // Right arrow
-    makeTouchButton(160, 440, 35, '>',
+    bind('btn-right',
       () => { this.touchRight = true; },
       () => { this.touchRight = false; },
     );
-
-    // Jump button (biggest — most used)
-    makeTouchButton(720, 440, 40, 'JUMP',
+    bind('btn-jump',
       () => { this.touchJump = true; this.touchJumpJustPressed = true; },
       () => { this.touchJump = false; },
     );
-
-    // Ability button (E)
-    makeTouchButton(620, 440, 30, 'E',
+    bind('btn-ability',
       () => { this.touchAbility = true; this.touchAbilityJustPressed = true; },
       () => { this.touchAbility = false; },
     );

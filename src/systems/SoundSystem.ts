@@ -87,43 +87,43 @@ class SoundSystemClass {
     if (!this.audioContext) this.init();
     if (this.audioContext?.state === 'suspended') this.audioContext.resume();
     switch (name) {
-      case 'jump': return this.playSoundConfig({ type: 'square', frequency: [262, 392], duration: 150, volume: 0.25, envelope: { attack: 0.005, decay: 0.04, sustain: 0.5, release: 0.1 } });
-      case 'doubleJump': return this.playSoundConfig({ type: 'triangle', frequency: [440, 660, 880], duration: 180, volume: 0.28, envelope: { attack: 0.005, decay: 0.05, sustain: 0.6, release: 0.12 } });
-      case 'land': return this.playSoundConfig({ type: 'sine', frequency: [200, 80], duration: 120, volume: 0.2, envelope: { attack: 0.001, decay: 0.08, sustain: 0.2, release: 0.04 } });
-      case 'wallJump': return this.playSoundConfig({ type: 'square', frequency: [330, 494], duration: 140, volume: 0.25, envelope: { attack: 0.003, decay: 0.05, sustain: 0.4, release: 0.09 } });
-      case 'glide': return this.playSoundConfig({ type: 'triangle', frequency: 220, duration: 200, volume: 0.1, envelope: { attack: 0.05, decay: 0.1, sustain: 0.8, release: 0.05 } });
-      case 'dash': return this.playSoundConfig({ type: 'sawtooth', frequency: [600, 200], duration: 250, volume: 0.25, noise: false, envelope: { attack: 0.005, decay: 0.08, sustain: 0.6, release: 0.16 } });
-      case 'groundPound': return this.playSoundConfig({ type: 'sine', frequency: [100, 40], duration: 300, volume: 0.35, envelope: { attack: 0.001, decay: 0.15, sustain: 0.3, release: 0.15 } });
-      case 'bounce': return this.playSoundConfig({ type: 'square', frequency: [294, 440, 330], duration: 200, volume: 0.22, envelope: { attack: 0.01, decay: 0.06, sustain: 0.5, release: 0.14 } });
-      case 'roll': return this.playSoundConfig({ type: 'sawtooth', frequency: [150, 200, 150], duration: 200, volume: 0.15, envelope: { attack: 0.01, decay: 0.05, sustain: 0.6, release: 0.14 } });
-      case 'waterSlide': return this.playSoundConfig({ type: 'sine', frequency: [400, 300], duration: 150, volume: 0.12, noise: false, envelope: { attack: 0.02, decay: 0.05, sustain: 0.7, release: 0.08 } });
-      case 'pause': return this.playSoundConfig({ type: 'triangle', frequency: [440, 330], duration: 150, volume: 0.2, envelope: { attack: 0.005, decay: 0.05, sustain: 0.5, release: 0.1 } });
-      case 'buttonClick': return this.playSoundConfig({ type: 'square', frequency: [880, 660], duration: 80, volume: 0.2, envelope: { attack: 0.002, decay: 0.03, sustain: 0.4, release: 0.05 } });
-      case 'buttonHover': return this.playSoundConfig({ type: 'sine', frequency: 660, duration: 60, volume: 0.1, envelope: { attack: 0.005, decay: 0.02, sustain: 0.5, release: 0.035 } });
-      case 'hatchCrack': return this.playSoundConfig({ type: 'square', frequency: [180, 140, 100], duration: 150, volume: 0.22, envelope: { attack: 0.002, decay: 0.05, sustain: 0.3, release: 0.1 } });
+      case 'jump': return this.playSoundConfig({ type: 'sine', frequency: [262, 392], duration: 150, volume: 0.18, envelope: { attack: 0.01, decay: 0.04, sustain: 0.5, release: 0.1 } });
+      case 'doubleJump': return this.playSoundConfig({ type: 'triangle', frequency: [440, 660, 880], duration: 180, volume: 0.18, envelope: { attack: 0.01, decay: 0.05, sustain: 0.5, release: 0.12 } });
+      case 'land': return this.playSoundConfig({ type: 'sine', frequency: [200, 80], duration: 120, volume: 0.12, envelope: { attack: 0.005, decay: 0.08, sustain: 0.2, release: 0.04 } });
+      case 'wallJump': return this.playSoundConfig({ type: 'sine', frequency: [330, 494], duration: 140, volume: 0.18, envelope: { attack: 0.008, decay: 0.05, sustain: 0.4, release: 0.09 } });
+      case 'glide': return this.playSoundConfig({ type: 'sine', frequency: 220, duration: 200, volume: 0.08, envelope: { attack: 0.05, decay: 0.1, sustain: 0.8, release: 0.05 } });
+      case 'dash': return this.playSoundConfig({ type: 'triangle', frequency: [600, 200], duration: 250, volume: 0.18, envelope: { attack: 0.01, decay: 0.08, sustain: 0.5, release: 0.16 } });
+      case 'groundPound': return this.playSoundConfig({ type: 'sine', frequency: [100, 40], duration: 300, volume: 0.2, envelope: { attack: 0.005, decay: 0.15, sustain: 0.3, release: 0.15 } });
+      case 'bounce': return this.playSoundConfig({ type: 'triangle', frequency: [294, 440, 330], duration: 200, volume: 0.15, envelope: { attack: 0.01, decay: 0.06, sustain: 0.5, release: 0.14 } });
+      case 'roll': return this.playSoundConfig({ type: 'triangle', frequency: [150, 200, 150], duration: 200, volume: 0.1, envelope: { attack: 0.01, decay: 0.05, sustain: 0.5, release: 0.14 } });
+      case 'waterSlide': return this.playSoundConfig({ type: 'sine', frequency: [400, 300], duration: 150, volume: 0.1, envelope: { attack: 0.02, decay: 0.05, sustain: 0.7, release: 0.08 } });
+      case 'pause': return this.playSoundConfig({ type: 'triangle', frequency: [440, 330], duration: 150, volume: 0.12, envelope: { attack: 0.01, decay: 0.05, sustain: 0.5, release: 0.1 } });
+      case 'buttonClick': return this.playSoundConfig({ type: 'sine', frequency: [880, 660], duration: 80, volume: 0.12, envelope: { attack: 0.005, decay: 0.03, sustain: 0.4, release: 0.05 } });
+      case 'buttonHover': return this.playSoundConfig({ type: 'sine', frequency: 660, duration: 60, volume: 0.06, envelope: { attack: 0.01, decay: 0.02, sustain: 0.5, release: 0.035 } });
+      case 'hatchCrack': return this.playSoundConfig({ type: 'triangle', frequency: [180, 140, 100], duration: 150, volume: 0.15, envelope: { attack: 0.005, decay: 0.05, sustain: 0.3, release: 0.1 } });
       case 'collectEgg':
         [523, 659, 784].forEach((freq, i) => {
-          setTimeout(() => this.playSoundConfig({ type: 'square', frequency: freq, duration: 100, volume: 0.25, envelope: { attack: 0.005, decay: 0.03, sustain: 0.7, release: 0.06 } }), i * 60);
+          setTimeout(() => this.playSoundConfig({ type: 'sine', frequency: freq, duration: 120, volume: 0.15, envelope: { attack: 0.01, decay: 0.04, sustain: 0.6, release: 0.07 } }), i * 70);
         });
         return;
       case 'allEggs':
         [523, 659, 784, 1047].forEach((freq, i) => {
-          setTimeout(() => this.playSoundConfig({ type: 'triangle', frequency: freq, duration: 400, volume: 0.28, envelope: { attack: 0.01, decay: 0.08, sustain: 0.8, release: 0.3 } }), i * 100);
+          setTimeout(() => this.playSoundConfig({ type: 'triangle', frequency: freq, duration: 400, volume: 0.18, envelope: { attack: 0.02, decay: 0.08, sustain: 0.7, release: 0.3 } }), i * 100);
         });
         return;
       case 'levelComplete':
         [523, 587, 659, 784, 880, 1047].forEach((freq, i) => {
-          setTimeout(() => this.playSoundConfig({ type: 'square', frequency: freq, duration: 200, volume: 0.25, envelope: { attack: 0.01, decay: 0.05, sustain: 0.7, release: 0.15 } }), i * 150);
+          setTimeout(() => this.playSoundConfig({ type: 'sine', frequency: freq, duration: 200, volume: 0.15, envelope: { attack: 0.02, decay: 0.06, sustain: 0.6, release: 0.15 } }), i * 150);
         });
         return;
       case 'hatchReveal':
         [659, 784, 988, 1318].forEach((freq, i) => {
-          setTimeout(() => this.playSoundConfig({ type: 'triangle', frequency: freq, duration: 250, volume: 0.25, envelope: { attack: 0.02, decay: 0.06, sustain: 0.7, release: 0.18 } }), i * 80);
+          setTimeout(() => this.playSoundConfig({ type: 'triangle', frequency: freq, duration: 250, volume: 0.15, envelope: { attack: 0.03, decay: 0.06, sustain: 0.6, release: 0.18 } }), i * 80);
         });
         return;
       case 'newAnimal':
         [523, 659, 784, 1047, 1319].forEach((freq, i) => {
-          setTimeout(() => this.playSoundConfig({ type: 'sine', frequency: freq, duration: 500, volume: 0.25, envelope: { attack: 0.02, decay: 0.1, sustain: 0.8, release: 0.4 } }), i * 60);
+          setTimeout(() => this.playSoundConfig({ type: 'sine', frequency: freq, duration: 500, volume: 0.15, envelope: { attack: 0.03, decay: 0.1, sustain: 0.7, release: 0.4 } }), i * 60);
         });
         return;
     }

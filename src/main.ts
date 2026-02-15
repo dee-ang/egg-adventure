@@ -24,6 +24,9 @@ const config: Phaser.Types.Core.GameConfig = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
+  input: {
+    activePointers: 4,
+  },
   pixelArt: false, // We want smooth rendering for Canvas2D art
   scene: [BootScene, TitleScene, AnimalSelectScene, LevelSelectScene, GameScene, HatchScene, LevelEditorScene],
 };

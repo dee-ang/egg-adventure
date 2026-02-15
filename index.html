@@ -9,6 +9,7 @@
     body {
       background: #1a1a2e;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
@@ -18,9 +19,78 @@
       image-rendering: pixelated;
       image-rendering: crisp-edges;
     }
+    #touch-bar {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      height: 80px;
+      background: rgba(0,0,0,0.85);
+      border-top: 2px solid #333;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 12px;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    #touch-bar .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+    #touch-bar button {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      outline: none;
+    }
+    #touch-bar button:active, #touch-bar button.pressed {
+      background: rgba(255,255,255,0.35);
+      border-color: rgba(255,255,255,0.6);
+    }
+    #touch-bar button.btn-jump {
+      width: 76px;
+      height: 76px;
+      font-size: 18px;
+      background: rgba(76,175,80,0.25);
+      border-color: rgba(76,175,80,0.5);
+    }
+    #touch-bar button.btn-jump:active, #touch-bar button.btn-jump.pressed {
+      background: rgba(76,175,80,0.5);
+    }
+    #touch-bar button.btn-ability {
+      width: 56px;
+      height: 56px;
+      font-size: 16px;
+      background: rgba(255,152,0,0.2);
+      border-color: rgba(255,152,0,0.4);
+    }
+    #touch-bar button.btn-ability:active, #touch-bar button.btn-ability.pressed {
+      background: rgba(255,152,0,0.45);
+    }
   </style>
 </head>
 <body>
+  <div id="touch-bar">
+    <div class="btn-group">
+      <button id="btn-left">&lt;</button>
+      <button id="btn-right">&gt;</button>
+    </div>
+    <div class="btn-group">
+      <button id="btn-ability" class="btn-ability">E</button>
+      <button id="btn-jump" class="btn-jump">JUMP</button>
+    </div>
+  </div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
