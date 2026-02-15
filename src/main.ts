@@ -11,7 +11,7 @@ const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 800,
   height: 500,
-  parent: document.body,
+  parent: 'game-container',
   backgroundColor: '#87CEEB',
   physics: {
     default: 'arcade',
@@ -27,7 +27,7 @@ const config: Phaser.Types.Core.GameConfig = {
   input: {
     activePointers: 4,
   },
-  pixelArt: false, // We want smooth rendering for Canvas2D art
+  pixelArt: false,
   scene: [BootScene, TitleScene, AnimalSelectScene, LevelSelectScene, GameScene, HatchScene, LevelEditorScene],
 };
 

@@ -355,11 +355,7 @@ export class GameScene extends Phaser.Scene {
     // HUD
     this.createHUD(level.name);
 
-    // Touch controls (iPad / mobile)
     this.isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-    if (this.isTouchDevice) {
-      this.createTouchControls();
-    }
 
     this.cameras.main.fadeIn(500);
   }
@@ -793,38 +789,6 @@ export class GameScene extends Phaser.Scene {
     }).setOrigin(0.5).setScrollFactor(0).setDepth(101)
       .setInteractive({ useHandCursor: true });
     pauseBtn.on('pointerdown', () => this.togglePause());
-  }
-
-  private createTouchControls(): void {
-    // Show the HTML touch bar
-    const bar = document.getElementById('touch-bar');
-    if (!bar) return;
-    bar.style.display = 'flex';
-
-    const bind = (id: string, onDown: () => void, onUp: () => void) => {
-      const btn = document.getElementById(id);
-      if (!btn) return;
-      btn.addEventListener('touchstart', (e) => { e.preventDefault(); btn.classList.add('pressed'); onDown(); });
-      btn.addEventListener('touchend', (e) => { e.preventDefault(); btn.classList.remove('pressed'); onUp(); });
-      btn.addEventListener('touchcancel', (e) => { e.preventDefault(); btn.classList.remove('pressed'); onUp(); });
-    };
-
-    bind('btn-left',
-      () => { this.touchLeft = true; },
-      () => { this.touchLeft = false; },
-    );
-    bind('btn-right',
-      () => { this.touchRight = true; },
-      () => { this.touchRight = false; },
-    );
-    bind('btn-jump',
-      () => { this.touchJump = true; this.touchJumpJustPressed = true; },
-      () => { this.touchJump = false; },
-    );
-    bind('btn-ability',
-      () => { this.touchAbility = true; this.touchAbilityJustPressed = true; },
-      () => { this.touchAbility = false; },
-    );
   }
 
   private collectEgg(egg: Phaser.Physics.Arcade.Sprite): void {
