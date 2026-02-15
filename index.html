@@ -21,6 +21,7 @@
     }
     #touch-bar {
       display: none;
+      order: 99;
       width: 100%;
       max-width: 800px;
       height: 80px;
@@ -81,6 +82,7 @@
   </style>
 </head>
 <body>
+  <script type="module" src="/src/main.ts"></script>
   <div id="touch-bar">
     <div class="btn-group">
       <button id="btn-left">&lt;</button>
@@ -91,6 +93,5 @@
       <button id="btn-jump" class="btn-jump">JUMP</button>
     </div>
   </div>
-  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
