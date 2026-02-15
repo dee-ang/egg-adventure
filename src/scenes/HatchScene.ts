@@ -428,10 +428,12 @@ export class HatchScene extends Phaser.Scene {
     const names: Record<string, string> = { gold: 'Gold', silver: 'Silver', bronze: 'Bronze' };
     const color = colors[medal];
 
+    // Position medal below the animal name (animal at y=180, name at y=235)
+    const cx = 400;
+    const cy = 280;
+
     // Star shape
     const gfx = this.add.graphics().setDepth(600);
-    const cx = 400;
-    const cy = 180;
     gfx.fillStyle(color);
     gfx.beginPath();
     for (let i = 0; i < 10; i++) {
@@ -452,7 +454,7 @@ export class HatchScene extends Phaser.Scene {
     });
 
     // Medal text
-    const medalText = this.add.text(cx, cy + 50, `${names[medal]} Medal!`, {
+    const medalText = this.add.text(cx, cy + 40, `${names[medal]} Medal!`, {
       fontSize: '24px', color: '#ffffff', fontFamily: 'Arial', fontStyle: 'bold',
       stroke: '#5D4037', strokeThickness: 3,
     }).setOrigin(0.5).setAlpha(0).setDepth(601);
